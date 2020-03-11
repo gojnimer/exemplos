@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validar formulario com Javascript</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+    
+</head>
+<body>
+    
+    <form name="formuser" >
+       <fieldset><legend><h1>Formulário</h1></legend>
+
+        Nome: <br><input type="text" name="nome" placeholder="teste" id="idNome" ><br>
+
+        Pontos: <br><input type="number" name="pontos" id="idPontos" value=""><br>
+
+        Nota: <br><input type="number" name="nota" id="idNotas" value=""><br>
+
+        Universidade: <br><input type="text"  name="universidade" id="idUni" value=""><br>
+
+        Empresas: <br><input type="text" name="empresas" id="idEmpresa" value=""><br>
+
+        Avatars: <br><input type="text" name="avatars" id="idAvatar" value=""><br>
+
+        Horários: <br><input type="time" name="horarios" id="idHour" value=""><br><br>
+
+        <input type="submit" onclick="return validar()">
+    </fieldset>
+        </form>
+        
+      <script src="index.js" ></script>
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    
+</body>
+</html>
