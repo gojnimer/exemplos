@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+
+    </head>
+    <body>
+        <form  name="myForm" target="_self" action="login.html" onsubmit="return validarFormulario(this)">
+            Nome: <br>
+            <input type="text" id="nome" placeholder="Digite seu nome" ><br>
+            E-mail:<br>
+            <input type="email" id="email" placeholder="Digite seu email"><br>
+            Usuário: <br>
+            <input type="text" id="usuario" placeholder="Crie um usuário"><br>
+            Senha:<br>
+            <input type="password" id="senha" maxlength="10" placeholder="Crie sua senha"><br>
+            Confirmar senha:<br>
+
+
+
+            <!--  Input com o evento onblur -->
+            <input type="password" onblur="VerificarSenha()" id="confirmarSenha" maxlength="10" placeholder="Confirme sua senha"><br>
+
+
+
+
+
+            <input type="submit" onclick="" value="Confirmar"> 
+            
+        </form>
+
+    </body>
+    <script>
+
+        // função chamada no evento onblur(evento que é chamado quando você tira o foco do input) do input com o id confirmarSenha
+        function VerificarSenha(){  
+            if(document.getElementById("senha").value != document.getElementById("confirmarSenha").value){
+                alert("As senhas não coincidem!");
+            }
+        }
+
+
+        // validação dos campos do formulario
+        function validarFormulario(myForm){
+
+            var nome = document.getElementById("nome");
+            if (nome.value == ""){
+            alert("Por favor, digite seu nome.");
+            nome.focus();
+            return false;
+            }
+
+            if(myForm.email.value == ""){
+                alert("Por favor, digite seu email");
+                myForm.email.focus();
+                return false;
+            }
+
+            if(myForm.usuario.value == ""){
+                alert("Por favor, crie um usuário.");
+                myForm.email.focus();
+                return false;
+            }
+
+            if(myForm.senha.value == ""){
+                alert("Por favor, crie uma senha.");
+                myForm.senha.focus();
+                return false;
+            }
+            else if (myForm.confirmarSenha.value == ""){
+                alert("Por favor, confirme sua senha.");
+                myForm.confirmarSenha.focus();
+                return false;
+            }
+           
+            if(myForm.confirmarSenha.value != myForm.senha.value){
+                alert("As senhas devem ser iguais!!!");
+                return false;
+            }
+
+            return true;
+        }
+
+    </script>
+
+
+
+    </html>

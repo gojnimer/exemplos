@@ -1,0 +1,50 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo AJAX GET</title>
+</head>
+<body>
+    <ul id="pokemons">
+    </ul>
+
+
+
+    <script>
+        loadDoc();
+        function loadDoc() {
+           var pokes;
+
+
+           var ajax = new XMLHttpRequest();
+
+            // Seta tipo de requisição e URL com os parâmetros
+            ajax.open("GET", "https://pokeapi.co/api/v2/pokemon", true);
+
+            // Envia a requisição
+            ajax.send();
+
+            // Cria um evento para receber o retorno.
+            ajax.onreadystatechange = function() {
+            
+            // Caso o state seja 4 e o http.status for 200, é porque a requisiçõe deu certo.
+                if (ajax.readyState == 4 && ajax.status == 200) {
+                
+                    var data = ajax.responseText;
+                    
+                // Retorno do Ajax
+     
+                    var arr_from_json = JSON.parse( data );
+                    arr_from_json.results.forEach(function(key){
+
+                        pokes += "<li>" + key['name'] + "</li>"
+                      
+                    })
+                    document.getElementById("pokemons").innerHTML = pokes;  
+                }   
+            }
+            
+        }
+    </script>
+</body>
+</html>

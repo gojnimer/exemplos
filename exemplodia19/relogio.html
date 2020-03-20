@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <title>Animação Relógio</title>
+        <style>
+            main {
+
+                display: flex;
+                padding: 2em;
+                height: 80vh;
+                justify-content: center;
+                align-items: middle; 
+                }
+                .relogio-base, #relogio-box{
+                 height: 100%;
+                }
+
+                .circulo-fundo{
+                fill:purple;
+                }
+
+                #hora, #minuto, #segundo{
+                transform-origin: 300px 300px;
+                }
+
+                .circulo, .estilo-fundo, .horas, .minutos, .segundos, .dimensao {
+                fill: none;
+                }
+                .circulo, .estilo-fundo, .horas, .minutos, .segundos{
+                stroke-miterlimit: 10;
+                stroke-width: 9;
+                }
+                .circulo, .estilo-fundo, .horas, .minutos{
+                stroke: #FFF;
+                }
+                .circulo-interno{
+                fill: #FFF;
+                }
+                .segundos{
+                stroke: #FFF;
+                }
+        </style>
+    </head>
+    <body>
+        <main>
+
+            <div class="relogio-base">
+                <svg id="relogio-box" xmlns="http://www.w3.org/2000/svg" width="600" height="600"
+                viewBox="0 0 600 600">
+                <g id="relogio">
+                    <circle class="circulo-fundo" cx="300" cy="300" r="273.9"/>
+                    <circle class="circulo" cx="300" cy="300" r="253.9"/>
+                    <path class="estilo-fundo" d="M300.5 94V61M506 300.5h32M300.5 506v33M94 300.5H60M411.3 107.817.9-
+                    13.8M493 190.2l13-7.4M492.1 411.4l16.5 9.5M411 492.3l8.9 15.3M189 492.3l-9.2
+                    15.9M107.7 411L93 419.5M107.5 189.3l-17.1-9.9M188.1 108.2l-9-15.6"/>
+                    <circle class="circulo-interno" cx="300" cy="300" r="16.2"/>
+
+                </g>
+                <g id="hora" class="hora">
+                    <path class="horas" d="M300.5 298V142"/>
+                    <path class="dimensao" cx="300" cy="300" r="253.9"/>
+                </g>
+                <g id="minuto">
+                    <path class="minutos" d="M300.5 298V67"/>
+                    <circle class="dimensao" cx="300" cy="300" r="253.9"/>
+                </g>
+                <g id="segundo" class="segundo">
+                    <path class="segundos" d="M300.5 350V55"/>
+                    <circle class="dimensao" cx="300" cy="300" r="253.9"/>
+                </g>
+                <g  class="segundo">
+                    <path class="segundos" d="M300.5 350V55"/>
+                    <circle class="dimensao" cx="300" cy="300" r="253.9"/>
+                </g>
+            
+                </svg>           
+            </div>
+
+   
+        </main>
+
+
+
+
+
+
+
+
+        <script>
+             
+            function exibirHora(){
+                relogioAtual = new Date();
+                let hr = relogioAtual.getHours();
+            
+                let min = relogioAtual.getMinutes();
+                
+
+                let seg = relogioAtual.getSeconds();
+
+                let mil = relogioAtual.getMilliseconds();
+
+                let ponteiroHora    = hr  * 30 + min/2;
+
+                let ponteiroMinuto  = min * 6  + (seg*6)/60; 
+
+                let ponteiroSegundo = seg * 6  + mil/166;
+
+
+                document.getElementById("hora").style.transform = "rotate(" + ponteiroHora + "deg)";
+                
+                document.getElementById("minuto").style.transform = `rotate(${ponteiroMinuto}deg)`;
+                var lista = document.getElementsByClassName("segundo");
+                for (let index = 0; index < lista.length; index++) {
+                    var ponteiro;
+                    if(index == 1){
+                       ponteiro = ponteiroSegundo - 300;
+                    }else{
+                        ponteiro = ponteiroSegundo;
+                    }
+                    lista[index].style.transform = `rotate(${ponteiro}deg)`;
+                    
+                }
+              
+             }
+
+             let intervalo = setInterval(exibirHora, 1);
+        </script>
+    </body>
+    
+</html>
